@@ -90,11 +90,21 @@ export function normalizeApifyEvent(raw: Raw, index: number): BayEvent | null {
 
   const isOnline = bool(raw, "isOnlineEvent") ?? false;
 
+  // Eventbrite search pages leak events from other countries, and the scraper
+  // hands those back with a placeholder San Francisco coordinate that sails
+  // through the bounding-box check below. The country is the reliable signal,
+  // so trust it over the point.
+  const country = str(raw, "venueCountry", "location.country");
+  if (country && country.toUpperCase() !== "US") return null;
+
   const city = str(raw, "venueCity", "location.city") ?? "San Francisco";
   let lat = num(raw, "coordinates.latitude", "location.coordinates.latitude");
   let lng = num(raw, "coordinates.longitude", "location.coordinates.longitude");
 
   if (lat == null || lng == null) {
+    // An online event has no physical venue, so a city centroid would invent a
+    // location rather than report one. Drop it instead of pinning it downtown.
+    if (isOnline) return null;
     const centroid = cityCentroid(city);
     if (!centroid) return null; // Unplaceable — drop rather than guess.
     const [dx, dy] = jitter(id, 450);

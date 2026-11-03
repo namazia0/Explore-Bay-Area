@@ -52,7 +52,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${serif.variable} ${mono.variable}`}>
+    // Extensions such as LanguageTool stamp attributes (`data-lt-installed`)
+    // onto <html> before React hydrates, which reads as a mismatch against the
+    // server HTML. This suppresses that one element's attribute diff only — it
+    // does not cascade, so genuine mismatches inside the app still surface.
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${display.variable} ${serif.variable} ${mono.variable}`}
+    >
       <body className="h-full w-full antialiased">{children}</body>
     </html>
   );

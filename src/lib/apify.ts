@@ -92,7 +92,9 @@ export async function fetchLiveEvents(query: EventQuery): Promise<LiveResult> {
 
   const run = await client.actor(ACTOR_ID).call(
     {
-      startUrls: buildStartUrls(query),
+      // `startUrls` uses the requestListSources editor, so each entry must be
+      // an object — a bare string is rejected as "not a valid URL".
+      startUrls: buildStartUrls(query).map((url) => ({ url })),
       scrapeEventDetails: false,
       maxEvents,
     },

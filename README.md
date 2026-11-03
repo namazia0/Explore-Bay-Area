@@ -53,7 +53,11 @@ which scrapes Eventbrite search and discovery pages. Category filters and the
 search box become Eventbrite browse URLs (`/d/ca--san-francisco/music/`), and
 the Actor returns each listing with coordinates, taxonomy, pricing and
 organiser stats. `src/lib/normalize.ts` folds that into the app's own shape and
-drops anything outside the Bay Area bounding box.
+drops anything it cannot place honestly: events outside the Bay Area bounding
+box, events whose `venueCountry` is not `US` (Eventbrite search leaks foreign
+listings, and the scraper hands those back with a placeholder San Francisco
+coordinate that would otherwise pass the box check), and online events with no
+venue at all rather than inventing a downtown pin for them.
 
 **This Actor is paid: from $3.00 per 1,000 results, i.e. $0.003 each.** Three
 things keep that in hand:
