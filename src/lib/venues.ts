@@ -1,0 +1,132 @@
+import type { CategoryId } from "./types";
+
+export interface Venue {
+  name: string;
+  city: string;
+  lng: number;
+  lat: number;
+  cats: CategoryId[];
+  /** Relative pull — scales how many events spawn here and their heat. */
+  weight: number;
+  address?: string;
+}
+
+/** ~100 real Bay Area venues, hand-placed. Used to seed the curated layer. */
+export const VENUES: Venue[] = [
+  // ——— San Francisco · core ———
+  { name: "The Fillmore", city: "San Francisco", lng: -122.4330, lat: 37.7840, cats: ["music"], weight: 9, address: "1805 Geary Blvd" },
+  { name: "Great American Music Hall", city: "San Francisco", lng: -122.4186, lat: 37.7849, cats: ["music"], weight: 7, address: "859 O'Farrell St" },
+  { name: "Bill Graham Civic Auditorium", city: "San Francisco", lng: -122.4178, lat: 37.7786, cats: ["music", "community"], weight: 9, address: "99 Grove St" },
+  { name: "The Independent", city: "San Francisco", lng: -122.4376, lat: 37.7760, cats: ["music"], weight: 7, address: "628 Divisadero St" },
+  { name: "The Warfield", city: "San Francisco", lng: -122.4106, lat: 37.7826, cats: ["music", "film"], weight: 8, address: "982 Market St" },
+  { name: "The Chapel", city: "San Francisco", lng: -122.4216, lat: 37.7599, cats: ["music", "film"], weight: 6, address: "777 Valencia St" },
+  { name: "Bimbo's 365 Club", city: "San Francisco", lng: -122.4151, lat: 37.8008, cats: ["music", "nightlife"], weight: 6, address: "1025 Columbus Ave" },
+  { name: "Davies Symphony Hall", city: "San Francisco", lng: -122.4203, lat: 37.7776, cats: ["music", "arts"], weight: 8, address: "201 Van Ness Ave" },
+  { name: "War Memorial Opera House", city: "San Francisco", lng: -122.4208, lat: 37.7786, cats: ["arts", "music"], weight: 7, address: "301 Van Ness Ave" },
+  { name: "Herbst Theatre", city: "San Francisco", lng: -122.4207, lat: 37.7794, cats: ["arts"], weight: 5, address: "401 Van Ness Ave" },
+  { name: "Chase Center", city: "San Francisco", lng: -122.3878, lat: 37.7680, cats: ["sports", "music"], weight: 10, address: "1 Warriors Way" },
+  { name: "Oracle Park", city: "San Francisco", lng: -122.3893, lat: 37.7786, cats: ["sports", "food"], weight: 10, address: "24 Willie Mays Plaza" },
+  { name: "SFMOMA", city: "San Francisco", lng: -122.4011, lat: 37.7857, cats: ["arts"], weight: 8, address: "151 3rd St" },
+  { name: "de Young Museum", city: "San Francisco", lng: -122.4687, lat: 37.7715, cats: ["arts", "family"], weight: 7, address: "50 Hagiwara Tea Garden Dr" },
+  { name: "Asian Art Museum", city: "San Francisco", lng: -122.4161, lat: 37.7801, cats: ["arts", "community"], weight: 6, address: "200 Larkin St" },
+  { name: "Exploratorium", city: "San Francisco", lng: -122.3973, lat: 37.8017, cats: ["family", "tech"], weight: 8, address: "Pier 15, Embarcadero" },
+  { name: "California Academy of Sciences", city: "San Francisco", lng: -122.4661, lat: 37.7699, cats: ["family", "tech"], weight: 8, address: "55 Music Concourse Dr" },
+  { name: "Ferry Building Marketplace", city: "San Francisco", lng: -122.3937, lat: 37.7955, cats: ["food", "community"], weight: 9, address: "1 Ferry Building" },
+  { name: "Golden Gate Park Bandshell", city: "San Francisco", lng: -122.4682, lat: 37.7701, cats: ["music", "outdoors"], weight: 7 },
+  { name: "Mission Dolores Park", city: "San Francisco", lng: -122.4269, lat: 37.7596, cats: ["outdoors", "community"], weight: 8 },
+  { name: "Presidio Main Post", city: "San Francisco", lng: -122.4662, lat: 37.7989, cats: ["outdoors", "family"], weight: 7 },
+  { name: "Crissy Field", city: "San Francisco", lng: -122.4648, lat: 37.8039, cats: ["outdoors", "sports"], weight: 7 },
+  { name: "Lands End Trail", city: "San Francisco", lng: -122.5107, lat: 37.7800, cats: ["outdoors"], weight: 6 },
+  { name: "Twin Peaks", city: "San Francisco", lng: -122.4477, lat: 37.7544, cats: ["outdoors"], weight: 6 },
+  { name: "Coit Tower", city: "San Francisco", lng: -122.4058, lat: 37.8024, cats: ["outdoors", "arts"], weight: 5 },
+  { name: "Sutro Baths", city: "San Francisco", lng: -122.5137, lat: 37.7800, cats: ["outdoors"], weight: 5 },
+  { name: "Ocean Beach", city: "San Francisco", lng: -122.5107, lat: 37.7594, cats: ["outdoors", "sports"], weight: 6 },
+  { name: "Bernal Heights Park", city: "San Francisco", lng: -122.4158, lat: 37.7434, cats: ["outdoors"], weight: 4 },
+  { name: "Pier 39", city: "San Francisco", lng: -122.4098, lat: 37.8087, cats: ["family", "food"], weight: 7 },
+  { name: "Castro Theatre", city: "San Francisco", lng: -122.4349, lat: 37.7620, cats: ["film", "arts"], weight: 7, address: "429 Castro St" },
+  { name: "Roxie Theater", city: "San Francisco", lng: -122.4221, lat: 37.7649, cats: ["film"], weight: 5, address: "3117 16th St" },
+  { name: "Cobb's Comedy Club", city: "San Francisco", lng: -122.4157, lat: 37.8030, cats: ["film"], weight: 5, address: "915 Columbus Ave" },
+  { name: "Punch Line San Francisco", city: "San Francisco", lng: -122.3990, lat: 37.7943, cats: ["film"], weight: 5, address: "444 Battery St" },
+  { name: "The Midway", city: "San Francisco", lng: -122.3875, lat: 37.7472, cats: ["nightlife", "arts"], weight: 7, address: "900 Marin St" },
+  { name: "Public Works", city: "San Francisco", lng: -122.4194, lat: 37.7694, cats: ["nightlife", "music"], weight: 6, address: "161 Erie St" },
+  { name: "1015 Folsom", city: "San Francisco", lng: -122.4087, lat: 37.7782, cats: ["nightlife"], weight: 6, address: "1015 Folsom St" },
+  { name: "Monarch", city: "San Francisco", lng: -122.4142, lat: 37.7736, cats: ["nightlife"], weight: 5, address: "101 6th St" },
+  { name: "August Hall", city: "San Francisco", lng: -122.4100, lat: 37.7862, cats: ["nightlife", "music"], weight: 6, address: "420 Mason St" },
+  { name: "Moscone Center", city: "San Francisco", lng: -122.4012, lat: 37.7840, cats: ["business", "tech"], weight: 10, address: "747 Howard St" },
+  { name: "Yerba Buena Gardens", city: "San Francisco", lng: -122.4025, lat: 37.7853, cats: ["community", "arts"], weight: 7 },
+  { name: "Salesforce Park", city: "San Francisco", lng: -122.3966, lat: 37.7897, cats: ["community", "wellness"], weight: 6 },
+  { name: "SHACK15 at the Ferry Building", city: "San Francisco", lng: -122.3933, lat: 37.7952, cats: ["tech", "business"], weight: 8 },
+  { name: "GitHub HQ", city: "San Francisco", lng: -122.3910, lat: 37.7823, cats: ["tech"], weight: 7, address: "88 Colin P Kelly Jr St" },
+  { name: "The Commons SF", city: "San Francisco", lng: -122.4056, lat: 37.7816, cats: ["tech", "business"], weight: 6 },
+  { name: "Frontier Tower", city: "San Francisco", lng: -122.4060, lat: 37.7850, cats: ["tech"], weight: 6, address: "995 Market St" },
+  { name: "Fort Mason Center", city: "San Francisco", lng: -122.4318, lat: 37.8065, cats: ["arts", "food"], weight: 7 },
+  { name: "Palace of Fine Arts", city: "San Francisco", lng: -122.4484, lat: 37.8029, cats: ["arts", "family"], weight: 6 },
+  { name: "SoMa StrEat Food Park", city: "San Francisco", lng: -122.4116, lat: 37.7718, cats: ["food"], weight: 5 },
+  { name: "Off the Grid · Fort Mason", city: "San Francisco", lng: -122.4310, lat: 37.8066, cats: ["food", "community"], weight: 7 },
+  { name: "Alemany Farmers Market", city: "San Francisco", lng: -122.4074, lat: 37.7347, cats: ["food", "community"], weight: 5 },
+  { name: "Japantown Peace Plaza", city: "San Francisco", lng: -122.4297, lat: 37.7853, cats: ["community", "food"], weight: 6 },
+  { name: "Portsmouth Square, Chinatown", city: "San Francisco", lng: -122.4060, lat: 37.7946, cats: ["community"], weight: 5 },
+  { name: "Union Square", city: "San Francisco", lng: -122.4075, lat: 37.7880, cats: ["community", "family"], weight: 7 },
+  { name: "SF Main Public Library", city: "San Francisco", lng: -122.4156, lat: 37.7791, cats: ["family", "community"], weight: 6 },
+  { name: "Thrive City", city: "San Francisco", lng: -122.3880, lat: 37.7675, cats: ["community", "wellness"], weight: 6 },
+  { name: "Golden Gate Bridge Welcome Center", city: "San Francisco", lng: -122.4751, lat: 37.8077, cats: ["outdoors", "family"], weight: 7 },
+
+  // ——— East Bay ———
+  { name: "Fox Theater Oakland", city: "Oakland", lng: -122.2712, lat: 37.8080, cats: ["music"], weight: 8, address: "1807 Telegraph Ave" },
+  { name: "The New Parish", city: "Oakland", lng: -122.2713, lat: 37.8044, cats: ["music", "nightlife"], weight: 6 },
+  { name: "Yoshi's Oakland", city: "Oakland", lng: -122.2535, lat: 37.7955, cats: ["music", "food"], weight: 6 },
+  { name: "Oakland Museum of California", city: "Oakland", lng: -122.2639, lat: 37.7975, cats: ["arts", "family"], weight: 7 },
+  { name: "Jack London Square", city: "Oakland", lng: -122.2776, lat: 37.7946, cats: ["food", "community"], weight: 7 },
+  { name: "Lake Merritt Amphitheater", city: "Oakland", lng: -122.2583, lat: 37.8044, cats: ["outdoors", "music"], weight: 7 },
+  { name: "Temescal Alley", city: "Oakland", lng: -122.2611, lat: 37.8355, cats: ["food", "arts"], weight: 5 },
+  { name: "Oakland Coliseum", city: "Oakland", lng: -122.2005, lat: 37.7516, cats: ["sports", "music"], weight: 8 },
+  { name: "Redwood Regional Park", city: "Oakland", lng: -122.1700, lat: 37.8100, cats: ["outdoors"], weight: 5 },
+  { name: "Greek Theatre", city: "Berkeley", lng: -122.2544, lat: 37.8740, cats: ["music"], weight: 8 },
+  { name: "UC Berkeley · Sproul Plaza", city: "Berkeley", lng: -122.2595, lat: 37.8695, cats: ["tech", "community"], weight: 8 },
+  { name: "BAMPFA", city: "Berkeley", lng: -122.2663, lat: 37.8683, cats: ["arts", "film"], weight: 6 },
+  { name: "The UC Theatre", city: "Berkeley", lng: -122.2683, lat: 37.8704, cats: ["music"], weight: 6 },
+  { name: "Berkeley Repertory Theatre", city: "Berkeley", lng: -122.2676, lat: 37.8694, cats: ["arts"], weight: 6 },
+  { name: "Berkeley Marina", city: "Berkeley", lng: -122.3115, lat: 37.8651, cats: ["outdoors", "family"], weight: 6 },
+  { name: "Tilden Regional Park", city: "Berkeley", lng: -122.2447, lat: 37.8982, cats: ["outdoors", "family"], weight: 6 },
+  { name: "Ashby Flea Market", city: "Berkeley", lng: -122.2700, lat: 37.8530, cats: ["community", "food"], weight: 5 },
+  { name: "Emeryville Public Market", city: "Emeryville", lng: -122.2930, lat: 37.8389, cats: ["food"], weight: 5 },
+  { name: "Alameda Point Antiques Faire", city: "Alameda", lng: -122.2990, lat: 37.7830, cats: ["community", "arts"], weight: 5 },
+
+  // ——— Peninsula ———
+  { name: "Stanford Memorial Court", city: "Palo Alto", lng: -122.1697, lat: 37.4275, cats: ["tech", "arts"], weight: 8 },
+  { name: "Frost Amphitheater", city: "Palo Alto", lng: -122.1723, lat: 37.4245, cats: ["music"], weight: 7 },
+  { name: "University Avenue", city: "Palo Alto", lng: -122.1610, lat: 37.4440, cats: ["food", "business"], weight: 7 },
+  { name: "The Stanford Dish", city: "Palo Alto", lng: -122.1800, lat: 37.4080, cats: ["outdoors", "sports"], weight: 5 },
+  { name: "Computer History Museum", city: "Mountain View", lng: -122.0774, lat: 37.4142, cats: ["tech", "family"], weight: 8 },
+  { name: "Googleplex", city: "Mountain View", lng: -122.0841, lat: 37.4220, cats: ["tech"], weight: 8 },
+  { name: "Shoreline Amphitheatre", city: "Mountain View", lng: -122.0806, lat: 37.4267, cats: ["music"], weight: 9 },
+  { name: "Castro Street", city: "Mountain View", lng: -122.0800, lat: 37.3929, cats: ["food", "community"], weight: 6 },
+  { name: "Meta HQ · Menlo Park", city: "Menlo Park", lng: -122.1483, lat: 37.4850, cats: ["tech", "business"], weight: 7 },
+  { name: "Oracle Redwood Shores", city: "Redwood City", lng: -122.2640, lat: 37.5300, cats: ["tech", "business"], weight: 6 },
+  { name: "San Mateo County Event Center", city: "San Mateo", lng: -122.2960, lat: 37.5480, cats: ["community", "family"], weight: 7 },
+  { name: "Hiller Aviation Museum", city: "San Carlos", lng: -122.2500, lat: 37.5130, cats: ["family", "tech"], weight: 5 },
+  { name: "Broadway Burlingame", city: "Burlingame", lng: -122.3650, lat: 37.5870, cats: ["food"], weight: 5 },
+  { name: "Filoli Historic House & Garden", city: "Woodside", lng: -122.3140, lat: 37.4710, cats: ["outdoors", "family"], weight: 6 },
+  { name: "Half Moon Bay State Beach", city: "Half Moon Bay", lng: -122.4450, lat: 37.4650, cats: ["outdoors"], weight: 6 },
+
+  // ——— South Bay ———
+  { name: "SAP Center at San Jose", city: "San Jose", lng: -121.9013, lat: 37.3328, cats: ["sports", "music"], weight: 9 },
+  { name: "San Jose McEnery Convention Center", city: "San Jose", lng: -121.8886, lat: 37.3297, cats: ["business", "tech"], weight: 8 },
+  { name: "The Ritz San Jose", city: "San Jose", lng: -121.8890, lat: 37.3340, cats: ["nightlife", "music"], weight: 5 },
+  { name: "Santana Row", city: "San Jose", lng: -121.9480, lat: 37.3210, cats: ["food", "community"], weight: 7 },
+  { name: "Japanese Friendship Garden", city: "San Jose", lng: -121.8740, lat: 37.3185, cats: ["outdoors", "family"], weight: 5 },
+  { name: "Winchester Mystery House", city: "San Jose", lng: -121.9511, lat: 37.3184, cats: ["family", "film"], weight: 6 },
+  { name: "Levi's Stadium", city: "Santa Clara", lng: -121.9697, lat: 37.4030, cats: ["sports", "music"], weight: 9 },
+  { name: "California's Great America", city: "Santa Clara", lng: -121.9740, lat: 37.3980, cats: ["family"], weight: 7 },
+
+  // ——— North Bay ———
+  { name: "Marin Headlands", city: "Sausalito", lng: -122.4990, lat: 37.8270, cats: ["outdoors"], weight: 7 },
+  { name: "Muir Woods National Monument", city: "Mill Valley", lng: -122.5720, lat: 37.8920, cats: ["outdoors", "family"], weight: 7 },
+  { name: "Mount Tamalpais", city: "Mill Valley", lng: -122.5790, lat: 37.9290, cats: ["outdoors", "sports"], weight: 6 },
+  { name: "Sausalito Waterfront", city: "Sausalito", lng: -122.4850, lat: 37.8590, cats: ["food", "arts"], weight: 6 },
+  { name: "Angel Island State Park", city: "Tiburon", lng: -122.4300, lat: 37.8610, cats: ["outdoors", "family"], weight: 5 },
+  { name: "Marin Center", city: "San Rafael", lng: -122.5340, lat: 37.9990, cats: ["arts", "music"], weight: 5 },
+  { name: "Point Reyes National Seashore", city: "Point Reyes Station", lng: -122.8070, lat: 38.0700, cats: ["outdoors"], weight: 5 },
+  { name: "Oxbow Public Market", city: "Napa", lng: -122.2820, lat: 38.2990, cats: ["food"], weight: 6 },
+  { name: "Sonoma Plaza", city: "Sonoma", lng: -122.4580, lat: 38.2920, cats: ["food", "community"], weight: 6 },
+];
