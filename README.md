@@ -1,5 +1,7 @@
 # Explore Bay Area
 
+This project was built during Anthropic's **Claude Fable 5.1 Build Day**, held on September 19, 2026, in San Francisco.
+
 An interactive field guide to everything happening across the nine-county Bay
 Area, drawn on a three-dimensional plate of the region.
 
@@ -142,10 +144,3 @@ src/
 
 `/` search · `1` `2` `3` view modes · `H` heat · `B` buildings · `T` transit ·
 `L` programme · `R` reset camera · `Esc` deselect · `?` help
-
----
-
-## Colophon
-
-This code was generated during the Anthropic **Claude Fable 5.1 Build Day** on
-September 19 in San Francisco.
