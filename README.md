@@ -9,6 +9,12 @@ it down by category, date, price or free-text search.
 
 ![paper, terrain, heat](docs/preview.png)
 
+Down at street zoom the buildings extrude and a pin opens into the full
+listing — here a live Eventbrite event pulled through Apify, with its real
+venue, date, price range and organiser:
+
+![3D San Francisco at street zoom with a live event selected](docs/street-3d.png)
+
 ---
 
 ## What's in it
@@ -136,3 +142,10 @@ src/
 
 `/` search · `1` `2` `3` view modes · `H` heat · `B` buildings · `T` transit ·
 `L` programme · `R` reset camera · `Esc` deselect · `?` help
+
+---
+
+## Colophon
+
+This code was generated during the Anthropic **Claude Fable 5.1 Build Day** on
+September 19 in San Francisco.
