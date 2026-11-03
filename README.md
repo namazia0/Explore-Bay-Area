@@ -52,8 +52,6 @@ counts, and keyboard shortcuts throughout — press `?`.
 
 ## The data
 
-Two layers, merged.
-
 ### Live — Eventbrite via Apify
 
 `src/lib/apify.ts` calls the [`hypebridge/eventbrite-search`][actor] Actor,
